@@ -60,5 +60,6 @@ int main()
 	pthread_join(p_thread[1], (void **)&status);
 	printf("thread exit 2\n");
 
+	pthread_mutex_destroy(&handle.mutex);
 	return 0;
 }
