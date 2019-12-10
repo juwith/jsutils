@@ -1,8 +1,19 @@
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
 
+typedef struct qData qData;
+
+struct qData
+{
+	qData* next;
+	void* item;
+};
+
 typedef struct Queue
 {
+	qData* front;
+	qData* rear;
+	int nItem;
 	struct QueueFuncTable *functable;
 } Queue;
 
@@ -19,6 +30,9 @@ struct QueueFuncTable
 #define Queue_Dequeue(obj) \
 	((Queue*)obj)->functable->dequeue(obj)
 
+/*
+ *	User must free items before destroy called.
+*/
 #define Queue_destroy(obj) \
 	((Queue*)obj)->functable->destroy(obj)
 

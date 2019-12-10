@@ -5,16 +5,45 @@
 
 void _queue_enque(Queue* queue, void* item)
 {
-	printf("push\n");
+	qData* newQData = (qData*)malloc(sizeof(qData));
+	if(queue->front == NULL)
+	{
+		queue->front = newQData;
+		queue->rear = queue->front;
+	}
+	else
+	{
+		queue->rear->next = newQData;
+		queue->rear = queue->rear->next;
+	}
+	newQData->item = item;
+	queue->nItem++;
 }
 
 void* _queue_deque(Queue* queue)
 {
-	printf("pop\n");
+	if(queue->front == NULL)
+		return NULL;
+
+	void* item = queue->front->item;
+	qData* qnext = queue->front->next;
+	free(queue->front);
+	queue->front = qnext;
+
+	queue->nItem--;
+	return item;
 }
 
 void _queue_destroy(Queue* queue)
 {
+	while(queue->front != NULL)
+	{
+		qData* qnext = queue->front->next;
+		free(queue->front);
+		queue->front = qnext;
+		queue->nItem--;
+	}
+
 	free(queue);
 	queue = NULL;
 }
