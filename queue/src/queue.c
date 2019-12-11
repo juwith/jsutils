@@ -16,6 +16,7 @@ void _queue_enque(Queue* queue, void* item)
 		queue->rear->next = newQData;
 		queue->rear = queue->rear->next;
 	}
+	newQData->next = NULL;
 	newQData->item = item;
 	queue->nItem++;
 }
@@ -34,14 +35,21 @@ void* _queue_deque(Queue* queue)
 	return item;
 }
 
+int _queue_get_itemNum(Queue* queue)
+{
+	if(queue == NULL)
+		return -1;
+
+	return queue->nItem;
+}
+
+
 void _queue_destroy(Queue* queue)
 {
 	while(queue->front != NULL)
 	{
-		qData* qnext = queue->front->next;
-		free(queue->front);
-		queue->front = qnext;
-		queue->nItem--;
+		void* item = _queue_deque(queue);
+		if(item) free(item);
 	}
 
 	free(queue);
@@ -53,6 +61,7 @@ Queue* Queue_init()
 	static struct QueueFuncTable functable = {
 		_queue_enque,
 		_queue_deque,
+		_queue_get_itemNum,
 		_queue_destroy
 	};
 

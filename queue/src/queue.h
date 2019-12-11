@@ -21,20 +21,29 @@ struct QueueFuncTable
 {
 	void (*enqueue)(Queue* queue, void* item);
 	void* (*dequeue)(Queue* queue);
+	int (*get_itemNum)(Queue* queue);
 	void (*destroy)(Queue* queue);
 };
 
-#define Queue_Enqueue(obj,item) \
-	((Queue*)obj)->functable->enqueue(obj,item)
+static inline void Queue_Enqueue(Queue *obj,void* item)
+{
+	obj->functable->enqueue(obj,item);
+}
 
-#define Queue_Dequeue(obj) \
-	((Queue*)obj)->functable->dequeue(obj)
+static inline void* Queue_Dequeue(Queue *obj)
+{
+	return obj->functable->dequeue(obj);
+}
 
-/*
- *	User must free items before destroy called.
-*/
-#define Queue_destroy(obj) \
-	((Queue*)obj)->functable->destroy(obj)
+static inline int Queue_Get_ItemNum(Queue *obj)
+{
+	return obj->functable->get_itemNum(obj);
+}
+
+static inline void Queue_destroy(Queue *obj)
+{
+	obj->functable->destroy(obj);
+}
 
 Queue* Queue_init();
 

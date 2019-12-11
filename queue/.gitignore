@@ -33,7 +33,7 @@ stamp-h1
 *.gcda
 
 # add user
-hello
+hello_queue
 config.guess
 config.sub
 .libs

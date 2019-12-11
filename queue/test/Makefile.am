@@ -1,9 +1,10 @@
-bin_PROGRAMS = hello
+bin_PROGRAMS = hello_queue
 
-hello_SOURCES = main.c
+hello_queue_SOURCES = main.c
 
-hello_CFLAGS = \
+hello_queue_CFLAGS = \
 	-I$(top_srcdir)/src
 
-hello_LDADD = \
-	 $(top_builddir)/src/libqueue.la
+hello_queue_LDADD = \
+	$(top_builddir)/src/libqueue.la \
+	-lpthread
