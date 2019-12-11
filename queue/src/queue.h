@@ -22,6 +22,7 @@ struct QueueFuncTable
 	void (*enqueue)(Queue* queue, void* item);
 	void* (*dequeue)(Queue* queue);
 	int (*get_itemNum)(Queue* queue);
+	void (*flush)(Queue* queue);
 	void (*destroy)(Queue* queue);
 };
 
@@ -38,6 +39,11 @@ static inline void* Queue_Dequeue(Queue *obj)
 static inline int Queue_Get_ItemNum(Queue *obj)
 {
 	return obj->functable->get_itemNum(obj);
+}
+
+static inline void Queue_Flush(Queue *obj)
+{
+	return obj->functable->flush(obj);
 }
 
 static inline void Queue_destroy(Queue *obj)

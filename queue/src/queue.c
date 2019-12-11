@@ -43,15 +43,18 @@ int _queue_get_itemNum(Queue* queue)
 	return queue->nItem;
 }
 
-
-void _queue_destroy(Queue* queue)
+void _queue_flush(Queue* queue)
 {
 	while(queue->front != NULL)
 	{
 		void* item = _queue_deque(queue);
 		if(item) free(item);
 	}
+}
 
+void _queue_destroy(Queue* queue)
+{
+	_queue_flush(queue);
 	free(queue);
 	queue = NULL;
 }
@@ -62,6 +65,7 @@ Queue* Queue_init()
 		_queue_enque,
 		_queue_deque,
 		_queue_get_itemNum,
+		_queue_flush,
 		_queue_destroy
 	};
 
