@@ -27,6 +27,8 @@ void* threadfunc1(void *data)
 		pthread_mutex_unlock(&phandle->mutex);
 		usleep(1000);
 	}
+
+	pthread_exit(NULL); //set return val if it is
 }
 
 void* threadfunc2(void *data)
@@ -43,6 +45,8 @@ void* threadfunc2(void *data)
 		pthread_mutex_unlock(&phandle->mutex);
 		usleep(1000);
 	}
+
+	pthread_exit(NULL); //set return val if it is
 }
 
 int main()
