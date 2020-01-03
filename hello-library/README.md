@@ -1,5 +1,3 @@
-# hello-library
-
 How to use  
 step 1.  
 ```

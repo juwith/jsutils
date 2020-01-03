@@ -1,5 +1,3 @@
-# simplest-autotools
-
 How to use  
 step 1.  
 ```
