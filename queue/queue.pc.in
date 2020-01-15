@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+ 
+Name: queue-Lib
+Description: queue lib for Linux
+Version: @VERSION@
+Libs: -L${libdir} -lqueue
+Cflags: -I${includedir}

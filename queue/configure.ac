@@ -25,5 +25,6 @@ LT_INIT
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
-                 test/Makefile])
+                 test/Makefile
+                 queue.pc])
 AC_OUTPUT
