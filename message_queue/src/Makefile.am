@@ -7,8 +7,7 @@ include_HEADERS = \
 	message.h
 
 libmessage_la_CFLAGS = \
-	$(QUEUE_CFLAGS) \
-	-lpthread
+	$(QUEUE_CFLAGS)
 
 libmessage_la_LDFLAGS = \
 	$(QUEUE_LIBS) \
