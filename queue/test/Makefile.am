@@ -6,5 +6,7 @@ hello_queue_CFLAGS = \
 	-I$(top_srcdir)/src
 
 hello_queue_LDADD = \
-	$(top_builddir)/src/libqueue.la \
+	$(top_builddir)/src/libqueue.la
+
+hello_queue_LDFLAGS = \
 	-lpthread

@@ -7,5 +7,7 @@ hello_queue_CFLAGS = \
 	$(QUEUE_CFLAGS)
 
 hello_queue_LDADD = \
-	$(top_builddir)/src/libmessage.la \
+	$(top_builddir)/src/libmessage.la
+
+hello_LDFLAGS = \
 	-lpthread
