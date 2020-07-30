@@ -1,8 +1,8 @@
-bin_PROGRAMS = hello
+bin_PROGRAMS = hellofault
 
-hello_SOURCES = hello.c
+hellofault_SOURCES = hellofault.c
 
-hello_CFLAGS = \
+hellofault_CFLAGS = \
 	-I$(top_srcdir)/src
 
 #hello_LDADD = \

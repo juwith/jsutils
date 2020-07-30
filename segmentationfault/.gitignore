@@ -33,7 +33,7 @@ stamp-h1
 *.gcda
 
 # add user
-hello
+src/hellofault
 config.guess
 config.sub
 .libs
